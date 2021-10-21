@@ -40,17 +40,37 @@ public class View extends VBox {
 		
 		acceder=new Button("Acceder");
 		cancelar=new Button("Cancelar");
-		
-		 
-		HBox H1=new HBox(2,user, Username);
-		HBox H2=new HBox(2,contraseña, password);
-		HBox H3=new HBox(2,LDAP, UsarLD);
-		HBox H4=new HBox(2,acceder, cancelar);
+		GridPane formPane=new GridPane(); 
+		formPane.addRow(0,user, Username);
+		formPane.addRow(1,contraseña, password);
+		formPane.addRow(2,LDAP, UsarLD);
+		formPane.addRow(3,acceder, cancelar);
+			
+		formPane.setAlignment(Pos.CENTER);
 			
 		setFillWidth(false);
 		
 		setAlignment(Pos.CENTER);
-		getChildren().addAll(H1,H2,H3,H4);
+		getChildren().addAll(formPane);
+	}
+	
+	public TextField getUsernameText() {
+		return Username;
+	}
+	public TextField getpasswordText() {
+		return password;
+	}
+
+	public Button getaccederButton() {
+		return acceder;
+	}
+
+	public Button getcancelarButton() {
+		return cancelar;
+	}
+
+	public CheckBox getLDAP() {
+		return LDAP;
 	}
 
 }
