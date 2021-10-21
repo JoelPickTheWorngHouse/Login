@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class View extends Application {
+public class View extends VBox {
 
 	TextField Username;
 	PasswordField password;
@@ -21,8 +21,8 @@ public class View extends Application {
 	Button cancelar;
 	Label UsarLD; 
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public View() {
+		super();
 		
 		Label user=new Label("Usuario:");
 		Username=new TextField();
@@ -41,23 +41,16 @@ public class View extends Application {
 		acceder=new Button("Acceder");
 		cancelar=new Button("Cancelar");
 		
-		VBox root = new VBox(4, 
-				new HBox(2,user, Username), 
-				new HBox(2,contraseña, password),
-				new HBox(2,LDAP, UsarLD),
-				new HBox(2,acceder, cancelar)
-			);
-		root.setFillWidth(false);
-		root.setAlignment(Pos.CENTER);
+		 
+		HBox H1=new HBox(2,user, Username);
+		HBox H2=new HBox(2,contraseña, password);
+		HBox H3=new HBox(2,LDAP, UsarLD);
+		HBox H4=new HBox(2,acceder, cancelar);
+			
+		setFillWidth(false);
 		
-		Scene scene = new Scene(root, 320, 200);
-
-		primaryStage.setTitle("Login");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-	}
-	public static void main(String[] args) {
-		launch(args);
+		setAlignment(Pos.CENTER);
+		getChildren().addAll(H1,H2,H3,H4);
 	}
 
 }
